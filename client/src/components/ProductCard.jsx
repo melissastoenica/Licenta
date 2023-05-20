@@ -72,7 +72,7 @@ const ProductCard = ({ product }) => {
       shadow='lg'
       position='relative'
     >
-      {product.productisNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
+      {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Image src={product.image} alt={product.name} roundedTop='lg' />
 
@@ -82,7 +82,7 @@ const ProductCard = ({ product }) => {
             Stoc insuficient
           </Badge>
         )}
-        {product.productisNew && (
+        {product.productIsNew && (
           <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
             Nou
           </Badge>
@@ -90,7 +90,7 @@ const ProductCard = ({ product }) => {
       </Box>
 
       <Flex mt='1' justifyContent='space-between' alignContent='center'>
-        <Link as={ReactLink} to={`/product${product._id}`} pt='2' cursor='pointer'>
+        <Link as={ReactLink} to={`/product/${product._id}`} pt='2' cursor='pointer'>
           <Box fontSize='2xl' fontWeight='semibold' lineHeight='tight'>
             {product.name}
           </Box>
@@ -101,9 +101,7 @@ const ProductCard = ({ product }) => {
       </Flex>
       <Flex justify='space-between'>
         <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>
-          <Box as='span' color={'gray.600'} fontSize='lg'>
-            
-          </Box>
+          <Box as='span' color={'gray.600'} fontSize='lg'></Box>
           {product.price.toFixed(2)} lei
         </Box>
         <Tooltip label='Adaugă în coș' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
