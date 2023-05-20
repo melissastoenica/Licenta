@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { RiStore2Line } from 'react-icons/ri';
+import { IoStorefrontSharp } from 'react-icons/io5';
 
 const links = [
   { linkName: 'Produse', path: '/products' },
@@ -50,7 +50,7 @@ const NavBar = () => {
         <HStack>
           <Link as={ReactLink} to='/'>
             <Flex alignItems='center'>
-              <Icon as={RiStore2Line} h={6} w={6} color='orange.400' />
+              <Icon as={IoStorefrontSharp} h={6} w={6} color='purple.400' />
               <Text fontWeight='extrabold'> Magazin Online</Text>
             </Flex>
           </Link>
@@ -81,8 +81,8 @@ const NavBar = () => {
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize='sm'
             fontWeight={600}
-            _hover={{ bg: 'orange.400' }}
-            bg='orange.500'
+            _hover={{ bg: 'purple.400' }}
+            bg='purple.500'
             color='white'
           >
             Creează un cont{' '}

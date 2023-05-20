@@ -12,31 +12,54 @@ import {
   Link,
   HStack,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { Link as ReactLink } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import { addCartItem } from '../redux/actions/cartActions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIcons } = useState('14px');
   return (
     <Flex>
       <HStack spacing='2px'>
-        <StarIcon size={iconSize} w='14px' color='orange.500' />
-        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'orange.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'orange.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'orange.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'orange.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color='purple.500' />
+        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'purple.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'purple.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'purple.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'purple.500' : 'gray.200'} />
       </HStack>
       <Text fontSize='md' fontWeight='bold' ml='4px'>
-        {`${numberOfReviews} ${numberOfReviews == 1 ? 'Recenzie' : 'Recenzii'}`}
+        {`${numberOfReviews} ${numberOfReviews === 1 ? 'Recenzie' : 'Recenzii'}`}
       </Text>
     </Flex>
   );
 };
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const cartInfo = useSelector((state) => state.cart);
+  const { cart } = cartInfo;
+
+  const addItem = (id) => {
+    if (cart.some((cartItem) => cartItem.id === id)) {
+      toast({
+        description:
+          'Acest produs se află deja în coșul dumneavoastră! Vă rugăm să mergeți în coș și să modidficați cantitatea.',
+        status: 'error',
+        isClosable: true,
+      });
+    } else {
+      dispatch(addCartItem(id, 1));
+      toast({ description: 'Produsul a fost adăugat.', status: 'success', isClosable: true });
+    }
+  };
+
   return (
     <Stack
       p='2'
@@ -79,12 +102,12 @@ const ProductCard = ({ product }) => {
       <Flex justify='space-between'>
         <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>
           <Box as='span' color={'gray.600'} fontSize='lg'>
-            lei
+            
           </Box>
-          {product.price.toFixed(2)}
+          {product.price.toFixed(2)} lei
         </Box>
         <Tooltip label='Adaugă în coș' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
-          <Button variant='ghost' display='flex' disabled={product.stock <= 0}>
+          <Button variant='ghost' display='flex' disabled={product.stock <= 0} onClick={() => addItem(product._id)}>
             <Icon as={FiShoppingCart} h={7} w={7} alignSelf='center' />
           </Button>
         </Tooltip>
