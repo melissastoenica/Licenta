@@ -71,7 +71,7 @@ const CartScreen = () => {
               <CartOrderSummary></CartOrderSummary>
               <HStack mt='6' fontWeight='semibold'>
                 <p>sau</p>
-                <Link as={ReactLink} to='./products' color={mode('purple.500', 'purple.200')}>
+                <Link as={ReactLink} to='/products' color={mode('purple.500', 'purple.200')}>
                   Continuă cumpărăturile
                 </Link>
               </HStack>

@@ -15,6 +15,7 @@ import {
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { IoStorefrontSharp } from 'react-icons/io5';
+import { useState } from 'react';
 
 const links = [
   { linkName: 'Produse', path: '/products' },
@@ -37,6 +38,7 @@ const NavLink = ({ path, children }) => (
 const NavBar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [isHovering, setIsHovering] = useState(false);
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent='space-between'>
@@ -48,16 +50,21 @@ const NavBar = () => {
         />
 
         <HStack>
-          <Link as={ReactLink} to='/'>
+          <Link
+            as={ReactLink}
+            to='/'
+            style={{ textDecoration: 'none' }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
             <Flex alignItems='center'>
-              <Icon as={IoStorefrontSharp} h={6} w={6} color='purple.400' />
+              <Icon as={IoStorefrontSharp} h={6} w={6} color={isHovering ? 'purple.900' : 'purple.400'} />
               <Text fontWeight='extrabold'> Magazin Online</Text>
             </Flex>
           </Link>
           <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
             {links.map((link) => (
               <NavLink key={link.linkName} path={link.path}>
-                {' '}
                 {link.linkName}
               </NavLink>
             ))}
