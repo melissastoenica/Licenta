@@ -14,7 +14,7 @@ export const getProducts = () => async (dispatch) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'A apărut o eroare neașteptată. Vă rugăm să încercați din nou mai târziu!'
+          : 'A apărut o eroare neașteptată. Vă rugăm să încercați din nou mai târziu.'
       )
     );
   }
@@ -32,7 +32,7 @@ export const getProduct = (id) => async (dispatch) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'An unexpected error has occured. Please try again later.'
+          : 'A apărut o eroare neașteptată. Vă rugăm să încercați din nou mai târziu.'
       )
     );
   }
