@@ -22,14 +22,29 @@ import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { CgProfile } from 'react-icons/cg';
 import { MdLocalShipping, MdLogout } from 'react-icons/md';
+import { FiShoppingCart } from 'react-icons/fi';
 import { IoStorefrontSharp } from 'react-icons/io5';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/actions/userActions';
 
+const ShoppingCartIcon = () => {
+  const cartInfo = useSelector((state) => state.cart);
+  const { cart } = cartInfo;
+  return (
+    <Flex>
+      <Text fontStyle='italic' as='sub' fontSize='xs'>
+        {cart.length}
+      </Text>
+      <Icon ml='-1.5' as={FiShoppingCart} h='4' w='7' alignSelf='center' />
+      Coș de cumpărături
+    </Flex>
+  );
+};
+
 const links = [
   { linkName: 'Produse', path: '/products' },
-  { linkName: 'Coș de cumpărături', path: '/cart' },
+  { linkName: <ShoppingCartIcon />, path: '/cart' },
 ];
 
 const NavLink = ({ path, children }) => (
