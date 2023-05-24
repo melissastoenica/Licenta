@@ -95,7 +95,7 @@ const RegistrationScreen = () => {
                 )}
                 <Stack spacing='5'>
                   <FormControl>
-                    <TextField type='text' name='name' placeholder='numele și prenumele dvs.' label='Nume și prenume' />
+                    <TextField type='text' name='name' placeholder='Numele și Prenumele dvs.' label='Nume și prenume' />
                     <TextField type='text' name='email' placeholder='nume@exemplu.com' label='Email' />
                     <PasswordTextField type='password' name='password' placeholder='parola ta' label='Parolă' />
                     <PasswordTextField
