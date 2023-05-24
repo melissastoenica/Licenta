@@ -59,7 +59,7 @@ import {
                     <Th>Id-ul comenzii</Th>
                     <Th>Data comenzii</Th>
                     <Th>Suma totală</Th>
-                    <Th>Articole</Th>
+                    <Th>Produse</Th>
                     <Th>Tipăriți chitanța</Th>
                   </Tr>
                 </Thead>
