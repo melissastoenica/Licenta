@@ -17,6 +17,9 @@ import {
   Button,
   SimpleGrid,
   useToast,
+  Tooltip,
+  Textarea,
+  Input,
 } from '@chakra-ui/react';
 import { MinusIcon, StarIcon, SmallAddIcon } from '@chakra-ui/icons';
 import { BiPackage, BiCheckShield, BiSupport } from 'react-icons/bi';
@@ -25,8 +28,13 @@ import { getProduct } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
 import { FaGratipay } from 'react-icons/fa';
+import { createProductReview, resetProductError } from '../redux/actions/productActions';
 
 const ProductScreen = () => {
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(1);
+  const [title, setTitle] = useState('');
+  const [reviewBoxOpen, setReviewBoxOpen] = useState(false);
   const [amount, setAmount] = useState(1);
   let { id } = useParams();
   const toast = useToast();
@@ -38,9 +46,18 @@ const ProductScreen = () => {
   const cartContent = useSelector((state) => state.cart);
   const { cart } = cartContent;
 
+  const user = useSelector((state) => state.user);
+  const { userInfo } = user;
+
   useEffect(() => {
     dispatch(getProduct(id));
-  }, [dispatch, id, cart]);
+
+    if (reviewSend) {
+      toast({ description: 'Recenzia a fost salvată.', status: 'success', isClosable: true });
+      dispatch(resetProductError());
+      setReviewBoxOpen(false);
+    }
+  }, [dispatch, id, cart, reviewSend]);
 
   const changeAmount = (input) => {
     if (input === 'plus') {
@@ -49,6 +66,12 @@ const ProductScreen = () => {
     if (input === 'minus') {
       setAmount(amount - 1);
     }
+  };
+
+  const hasUserReviewed = () => product.reviews.some((item) => item.user === userInfo._id);
+
+  const onSubmit = () => {
+    dispatch(createProductReview(product._id, userInfo._id, comment, rating, title));
   };
 
   const addItem = () => {
@@ -152,6 +175,61 @@ const ProductScreen = () => {
                 <Image mn='30px' src={product.image} alt={product.name} />
               </Flex>
             </Stack>
+
+            {userInfo && (
+              <>
+                <Tooltip label={hasUserReviewed() ? 'Ați lăsat deja o recenzie.' : ''} fontSize='md'>
+                  <Button
+                    isDisabled={hasUserReviewed()}
+                    my='20px'
+                    w='140px'
+                    colorScheme='purple'
+                    onClick={() => setReviewBoxOpen(!reviewBoxOpen)}
+                  >
+                    Scrie o recenzie
+                  </Button>
+                </Tooltip>
+                {reviewBoxOpen && (
+                  <Stack mb='20px'>
+                    <Wrap>
+                      <HStack spacing='2px'>
+                        <Button variant='outline' onClick={() => setRating(1)}>
+                          <StarIcon color='purple.500' />
+                        </Button>
+                        <Button variant='outline' onClick={() => setRating(2)}>
+                          <StarIcon color={rating >= 2 ? 'purple.500' : 'gray.200'} />
+                        </Button>
+                        <Button variant='outline' onClick={() => setRating(3)}>
+                          <StarIcon color={rating >= 3 ? 'purple.500' : 'gray.200'} />
+                        </Button>
+                        <Button variant='outline' onClick={() => setRating(4)}>
+                          <StarIcon color={rating >= 4 ? 'purple.500' : 'gray.200'} />
+                        </Button>
+                        <Button variant='outline' onClick={() => setRating(5)}>
+                          <StarIcon color={rating >= 5 ? 'purple.500' : 'gray.200'} />
+                        </Button>
+                      </HStack>
+                    </Wrap>
+                    <Input
+                      onChange={(e) => {
+                        setTitle(e.target.value);
+                      }}
+                      placeholder='Titlul recenziei (opțional)'
+                    />
+                    <Textarea
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
+                      placeholder={`Produsul ${product.name} este...`}
+                    />
+                    <Button w='140px' colorScheme='purple' onClick={() => onSubmit()}>
+                      Publică recenzia
+                    </Button>
+                  </Stack>
+                )}
+              </>
+            )}
+
             <Stack>
               <Text fontSize='xl' fontWeight='bold'>
                 Recenzii
