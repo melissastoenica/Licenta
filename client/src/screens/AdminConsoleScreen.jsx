@@ -2,7 +2,7 @@ import { Box, Stack, Heading, Tabs, TabList, Tab, TabPanels, TabPanel } from '@c
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UsersTab from '../components/UsersTab';
-// import OrdersTab from '../components/OrdersTab';
+import OrdersTab from '../components/OrdersTab';
 // import ProductsTab from '../components/ProductsTab';
 // import ReviewsTab from '../components/ReviewsTab';
 
@@ -21,22 +21,16 @@ const AdminConsoleScreen = () => {
           <Tabs size='md' variant='enclosed'>
             <TabList>
               <Tab>Utilizatori</Tab>
-              <Tab>Produse</Tab>
-              <Tab>Recenzii</Tab>
               <Tab>Comenzi</Tab>
+              <Tab>Recenzii</Tab>
+              <Tab>Produse</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
                 <UsersTab />
-                {/* </TabPanel>
-              <TabPanel>
-                <ProductsTab />
               </TabPanel>
               <TabPanel>
-                <ReviewsTab />
-              </TabPanel>
-              <TabPanel>
-                <OrdersTab /> */}
+                <OrdersTab />
               </TabPanel>
             </TabPanels>
           </Tabs>
