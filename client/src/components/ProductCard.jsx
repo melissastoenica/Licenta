@@ -22,7 +22,7 @@ import { addCartItem } from '../redux/actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Rating = ({ rating, numberOfReviews }) => {
-  const { iconSize, setIcons } = useState('14px');
+  const { iconSize, setIconSize } = useState('14px');
   return (
     <Flex>
       <HStack spacing='2px'>
@@ -102,7 +102,7 @@ const ProductCard = ({ product }) => {
       <Flex justify='space-between'>
         <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>
           <Box as='span' color={'gray.600'} fontSize='lg'></Box>
-          {product.price.toFixed(2)} lei
+          {Number(product.price).toFixed(2)} lei
         </Box>
         <Tooltip label='Adaugă în coș' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
           <Button variant='ghost' display='flex' isDisabled={product.stock === 0} onClick={() => addItem(product._id)}>
