@@ -26,8 +26,7 @@ const loginUser = asyncHandler(async (req, res) => {
       createdAt: user.createdAt,
     });
   } else {
-    res.status(401);
-    throw new Error('Utilizatorul nu a fost găsit.');
+    res.status(401).json('Adresă de email sau porolă invalidă.');
   }
 });
 
@@ -37,8 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const userExists = await User.findOne({ email });
   if (userExists) {
-    res.status(400);
-    throw new Error('Există deja un cont cu această adresă de email.');
+    res.status(400).json('Există deja un cont cu această adresă de email.');
   }
 
   const user = await User.create({
@@ -56,8 +54,8 @@ const registerUser = asyncHandler(async (req, res) => {
       token: genToken(user._id),
     });
   } else {
-    res.json(400);
-    throw new Error('Date de utilizator invalide');
+    res.status(400).json('Date de utilizator invalide');
+    
   }
 });
 
