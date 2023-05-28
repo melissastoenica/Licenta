@@ -8,7 +8,6 @@ import {
   Box,
   Link,
   Divider,
-  useDisclosure,
   useToast,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,15 +17,11 @@ import { createOrder, resetOrder } from '../redux/actions/orderActions';
 import { useEffect, useState, useCallback } from 'react';
 import CheckoutItem from './CheckoutItem';
 import PaypalButton from './PaypalButton';
-import PaymentSuccessModal from './PaymentSuccessModal';
-import PaymentErrorModal from './PaymentErrorModal';
 
 import { resetCart } from '../redux/actions/cartActions';
 import { useNavigate } from 'react-router-dom';
 
 const CheckoutOrderSummary = () => {
-  const { onClose: onErrorClose, onOpen: onErrorOpen, isOpen: isErrorOpen } = useDisclosure();
-  const { onClose: onSuccessClose, onOpen: onSuccessOpen, isOpen: isSuccessOpen } = useDisclosure();
   const colorMode = mode('gray.600', 'gray.400');
   const cartItems = useSelector((state) => state.cart);
   const { cart, subtotal, expressShipping } = cartItems;
@@ -58,7 +53,6 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
-    onSuccessOpen();
     dispatch(
       createOrder({
         orderItems: cart,
@@ -72,10 +66,18 @@ const CheckoutOrderSummary = () => {
     );
     dispatch(resetOrder());
     dispatch(resetCart());
+    navigate('/order-success');
   };
 
-  const onPaymentError = () => {
-    onErrorOpen();
+  const onPaymentError = (error) => {
+    toast({
+      description:
+        'Ceva a mers greșit în timpului procesului de plată. Vă rugăm să încercați din nou sau să vă asigurați că aveți fonduri suficiente.',
+      status: 'error',
+
+      duration: '600000',
+      isClosable: true,
+    });
   };
 
   return (
@@ -150,8 +152,6 @@ const CheckoutOrderSummary = () => {
           Continuă cumpărăturile
         </Link>
       </Flex>
-      <PaymentErrorModal onClose={onErrorClose} onOpen={onErrorOpen} isOpen={isErrorOpen} />
-      <PaymentSuccessModal onClose={onSuccessClose} onOpen={onSuccessOpen} isOpen={isSuccessOpen} />
     </Stack>
   );
 };

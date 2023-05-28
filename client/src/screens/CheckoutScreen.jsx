@@ -20,7 +20,7 @@ const CheckoutScreen = () => {
       <Stack direction={{ base: 'column', lg: 'row' }} align={{ lg: 'flex-start' }}>
         <Stack spacing={{ base: '8', md: '10' }} flex='1.5' mb={{ base: '12', md: 'none' }}>
           <Heading fontSize='2xl' fontWeight='extrabold'>
-            Informații de livrare
+            Informații livrare
           </Heading>
           <Stack spacing='6'>
             <ShippingInformation />
