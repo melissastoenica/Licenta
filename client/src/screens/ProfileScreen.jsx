@@ -106,7 +106,7 @@ const ProfileScreen = () => {
                     </FormControl>
                   </Stack>
                   <Stack spacing='6'>
-                    <Button colorScheme='purple' size='lg' fontSize='md' isLoading={loading} type='submit'>
+                    <Button colorScheme='teal' size='lg' fontSize='md' isLoading={loading} type='submit'>
                       Salvează
                     </Button>
                   </Stack>

@@ -37,11 +37,11 @@ const AddNewProduct = () => {
       <Td>
         <Text fontSize='sm'>Numele fișierului imaginii</Text>
         <Tooltip label={'Setează numele imaginii ex: iPhone.jpg'} fontSize='sm'>
-          <Input size='sm' value={image} onChange={(e) => setImage(e.target.value)} placeholder='ex: iPhone.jpg' />
+          <Input size='sm' value={image} onChange={(e) => setImage(e.target.value)} placeholder='ex: ruj_mac.jpg' />
         </Tooltip>
       </Td>
       <Td>
-        <Text fontSize='sm'>Description</Text>
+        <Text fontSize='sm'>Descriere</Text>
         <Textarea
           value={description}
           w='270px'
@@ -59,17 +59,17 @@ const AddNewProduct = () => {
           size='sm'
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
-          placeholder='ex: Apple sau Samsung etc.'
+          placeholder='ex: Benefit sau Mac etc.'
         />
         <Text fontSize='sm'>Nume</Text>
-        <Input size='sm' value={name} onChange={(e) => setName(e.target.value)} placeholder='ex: Samsung S30' />
+        <Input size='sm' value={name} onChange={(e) => setName(e.target.value)} placeholder='ex: Ruj Mac' />
       </Td>
 
       <Td>
         <Text fontSize='sm'>Categorie</Text>
-        <Input size='sm' value={category} onChange={(e) => setCategory(e.target.value)} placeholder='ex: Electronice' />
+        <Input size='sm' value={category} onChange={(e) => setCategory(e.target.value)} placeholder='ex: Ochi sau Buze' />
         <Text fontSize='sm'>Preț</Text>
-        <Input size='sm' value={price} onChange={(e) => setPrice(e.target.value)} placeholder='ex: 299.99' />
+        <Input size='sm' value={price} onChange={(e) => setPrice(e.target.value)} placeholder='ex: 50.99' />
       </Td>
 
       <Td>
@@ -89,7 +89,7 @@ const AddNewProduct = () => {
       </Td>
       <Td>
         <VStack>
-          <Button variant='outline' w='210px' colorScheme='purple' onClick={() => createNewProduct()}>
+          <Button variant='outline' w='210px' colorScheme='teal' onClick={() => createNewProduct()}>
             <MdDriveFolderUpload />
             <Text ml='2'>Salvează produsul</Text>
           </Button>

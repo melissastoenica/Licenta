@@ -26,11 +26,11 @@ const Rating = ({ rating, numberOfReviews }) => {
   return (
     <Flex>
       <HStack spacing='2px'>
-        <StarIcon size={iconSize} w='14px' color='purple.500' />
-        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'purple.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'purple.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'purple.500' : 'gray.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'purple.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color='teal.500' />
+        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'teal.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'teal.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'teal.500' : 'gray.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'teal.500' : 'gray.200'} />
       </HStack>
       <Text fontSize='md' fontWeight='bold' ml='4px'>
         {`${numberOfReviews} ${numberOfReviews === 1 ? 'Recenzie' : 'Recenzii'}`}

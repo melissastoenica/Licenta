@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link as ReactLink } from 'react-router-dom';
-import { IoStorefrontSharp } from 'react-icons/io5';
+import { GiLipstick } from 'react-icons/gi';
 
 const LandingScreen = () => (
   <Box maxW='8xl' mx='auto' px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }} minH='6xl'>
@@ -21,7 +21,7 @@ const LandingScreen = () => (
       <Box
         width={{ lg: 'sm' }}
         transform={{ base: 'translateY(-50%)', lg: 'none' }}
-        bg={{ base: useColorModeValue('purple.50', 'gray.700'), lg: 'transparent' }}
+        bg={{ base: useColorModeValue('teal.50', 'gray.700'), lg: 'transparent' }}
         mx={{ base: '6', md: '8', lg: '0' }}
         px={{ base: '6', md: '8', lg: '0' }}
         py={{ base: '6', md: '8', lg: '12' }}
@@ -29,26 +29,26 @@ const LandingScreen = () => (
         <Stack spacing={{ base: '8', lg: '10' }}>
           <Stack spacing={{ base: '2', lg: '4' }}>
             <Flex alignItems='center'>
-              <Icon as={IoStorefrontSharp} h={12} w={12} color={useColorModeValue('purple.500', 'purple.300')} />
+              <Icon as={GiLipstick} h={12} w={12} color={useColorModeValue('teal.500', 'teal.300')} />
               <Text fontSize='4xl' fontWeight='bold'>
-                    Magazin online
+                Saved by Make-up
               </Text>
             </Flex>
             <Heading size='xl' fontWeight='normal'>
-              Alabala portocala
+              Make-up Shop
             </Heading>
           </Stack>
           <HStack spacing='3'>
             <Link
               as={ReactLink}
               to='/products'
-              color={useColorModeValue('purple.500', 'purple.300')}
+              color={useColorModeValue('teal.500', 'teal.300')}
               fontWeight='bold'
               fontSize='lg'
             >
               Descoperă acum produsele noastre
             </Link>
-            <Icon color={useColorModeValue('purple.500', 'purple.300')} as={FaArrowRight} />
+            <Icon color={useColorModeValue('teal.500', 'teal.300')} as={FaArrowRight} />
           </HStack>
         </Stack>
       </Box>

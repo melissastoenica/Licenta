@@ -83,7 +83,7 @@ const ProductScreen = () => {
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
       {loading ? (
         <Stack direction='row' spacing={4}>
-          <Spinner mt={20} thickness='2px' speed='0.65s' emptyColor='gray.200' color='purple.500' size='xl' />
+          <Spinner mt={20} thickness='2px' speed='0.65s' emptyColor='gray.200' color='teal.500' size='xl' />
         </Stack>
       ) : error ? (
         <Alert status='error'>
@@ -124,11 +124,11 @@ const ProductScreen = () => {
                     <Text fontSize='xl'>{product.price} lei</Text>
                     <Flex>
                       <HStack spacing='2px'>
-                        <StarIcon color='purple.500' />
-                        <StarIcon color={product.rating >= 2 ? 'purple.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 3 ? 'purple.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 4 ? 'purple.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 5 ? 'purple.500' : 'gray.200'} />
+                        <StarIcon color='teal.500' />
+                        <StarIcon color={product.rating >= 2 ? 'teal.500' : 'gray.200'} />
+                        <StarIcon color={product.rating >= 3 ? 'teal.500' : 'gray.200'} />
+                        <StarIcon color={product.rating >= 4 ? 'teal.500' : 'gray.200'} />
+                        <StarIcon color={product.rating >= 5 ? 'teal.500' : 'gray.200'} />
                       </HStack>
                       <Text fontSize='medium' fontWeight='bold' ml='4px'>
                         {product.numberOfReviews} Recenzii
@@ -146,22 +146,17 @@ const ProductScreen = () => {
                       <SmallAddIcon w='20px' h='24px' />
                     </Button>
                   </Flex>
-                  <Button isDisabled={product.stock === 0} colorScheme='purple' onClick={() => addItem()}>
+                  <Button isDisabled={product.stock === 0} colorScheme='teal' onClick={() => addItem()}>
                     Adaugă în coș
                   </Button>
                   <Stack width='270px'>
                     <Flex alignItems='center'>
                       <BiPackage size='35px' />
                       <Text fontWeight='medium' fontSize='sm' ml='2'>
-                        Transportul este gratuit dacă comanda este peste 1000 de lei
+                        Transportul este gratuit dacă comanda este peste 300 de lei
                       </Text>
                     </Flex>
-                    <Flex alignItems='center'>
-                      <BiCheckShield size='20px' />
-                      <Text fontWeight='medium' fontSize='sm' ml='2'>
-                        2 ani garanție extinsă
-                      </Text>
-                    </Flex>
+
                     <Flex alignItems='center'>
                       <BiSupport size='20px' />
                       <Text fontWeight='medium' fontSize='sm' ml='2'>
@@ -183,7 +178,7 @@ const ProductScreen = () => {
                     isDisabled={hasUserReviewed()}
                     my='20px'
                     w='140px'
-                    colorScheme='purple'
+                    colorScheme='teal'
                     onClick={() => setReviewBoxOpen(!reviewBoxOpen)}
                   >
                     Scrie o recenzie
@@ -194,19 +189,19 @@ const ProductScreen = () => {
                     <Wrap>
                       <HStack spacing='2px'>
                         <Button variant='outline' onClick={() => setRating(1)}>
-                          <StarIcon color='purple.500' />
+                          <StarIcon color='teal.500' />
                         </Button>
                         <Button variant='outline' onClick={() => setRating(2)}>
-                          <StarIcon color={rating >= 2 ? 'purple.500' : 'gray.200'} />
+                          <StarIcon color={rating >= 2 ? 'teal.500' : 'gray.200'} />
                         </Button>
                         <Button variant='outline' onClick={() => setRating(3)}>
-                          <StarIcon color={rating >= 3 ? 'purple.500' : 'gray.200'} />
+                          <StarIcon color={rating >= 3 ? 'teal.500' : 'gray.200'} />
                         </Button>
                         <Button variant='outline' onClick={() => setRating(4)}>
-                          <StarIcon color={rating >= 4 ? 'purple.500' : 'gray.200'} />
+                          <StarIcon color={rating >= 4 ? 'teal.500' : 'gray.200'} />
                         </Button>
                         <Button variant='outline' onClick={() => setRating(5)}>
-                          <StarIcon color={rating >= 5 ? 'purple.500' : 'gray.200'} />
+                          <StarIcon color={rating >= 5 ? 'teal.500' : 'gray.200'} />
                         </Button>
                       </HStack>
                     </Wrap>
@@ -222,7 +217,7 @@ const ProductScreen = () => {
                       }}
                       placeholder={`Produsul ${product.name} este...`}
                     />
-                    <Button w='140px' colorScheme='purple' onClick={() => onSubmit()}>
+                    <Button w='140px' colorScheme='teal' onClick={() => onSubmit()}>
                       Publică recenzia
                     </Button>
                   </Stack>
@@ -238,11 +233,11 @@ const ProductScreen = () => {
                 {product.reviews.map((review) => (
                   <Box key={review._id}>
                     <Flex spacing='2px' alignItems='center'>
-                      <StarIcon color='purple.500' />
-                      <StarIcon color={review.rating >= 2 ? 'purple.500' : 'gray.200'} />
-                      <StarIcon color={review.rating >= 3 ? 'purple.500' : 'gray.200'} />
-                      <StarIcon color={review.rating >= 4 ? 'purple.500' : 'gray.200'} />
-                      <StarIcon color={review.rating >= 5 ? 'purple.500' : 'gray.200'} />
+                      <StarIcon color='teal.500' />
+                      <StarIcon color={review.rating >= 2 ? 'teal.500' : 'gray.200'} />
+                      <StarIcon color={review.rating >= 3 ? 'teal.500' : 'gray.200'} />
+                      <StarIcon color={review.rating >= 4 ? 'teal.500' : 'gray.200'} />
+                      <StarIcon color={review.rating >= 5 ? 'teal.500' : 'gray.200'} />
                       <Text fontWeight='semibold' ml='4px'>
                         {review.title && review.title}
                       </Text>

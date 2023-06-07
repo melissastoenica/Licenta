@@ -85,7 +85,7 @@ const UsersTab = () => {
                       </Td>
                       <Td>{user.email}</Td>
                       <Td>{new Date(user.createdAt).toDateString()}</Td>
-                      <Td>{user.isAdmin === 'true' ? <CheckCircleIcon color='purple.500' /> : ''}</Td>
+                      <Td>{user.isAdmin === 'true' ? <CheckCircleIcon color='teal.500' /> : ''}</Td>
                       <Td>
                         <Button
                           isDisabled={user._id === userInfo._id}

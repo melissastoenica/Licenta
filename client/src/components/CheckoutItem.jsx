@@ -25,7 +25,7 @@ const CheckoutItem = ({ cartItem }) => {
           <Spacer />
           <Select
             maxW='64px'
-            focusBorderColor={mode('purple.500', 'purple.200')}
+            focusBorderColor={mode('teal.500', 'teal.200')}
             value={qty}
             onChange={(e) => {
               dispatch(addCartItem(id, e.target.value));

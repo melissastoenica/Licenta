@@ -31,7 +31,7 @@ const CartOrderSummary = () => {
             Livrare
           </Text>
           <Text fontWeight='medium'>
-            {subtotal <= 1000 ? (
+            {subtotal <= 300 ? (
               standardShipping
             ) : (
               <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
@@ -45,14 +45,14 @@ const CartOrderSummary = () => {
             Total
           </Text>
           <Text fontSize='xl' fontWeight='extrabold'>
-            {subtotal <= 1000 ? Number(subtotal) + Number(standardShipping) : subtotal} lei
+            {subtotal <= 300 ? Number(subtotal) + Number(standardShipping) : subtotal} lei
           </Text>
         </Flex>
       </Stack>
       <Button
         as={ReactLink}
         to='/checkout'
-        colorScheme='purple'
+        colorScheme='teal'
         size='lg'
         fontSize='md'
         rightIcon={<FaArrowRight />}

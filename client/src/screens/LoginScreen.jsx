@@ -70,7 +70,7 @@ const LoginScreen = () => {
                 <Heading size={headingBR}>Conectează-te la contul tău</Heading>
                 <HStack spacing='1' justify='center'>
                   <Text color='muted'>Nu ai un cont?</Text>
-                  <Button as={ReactLink} to='/registration' variant='link' colorScheme='purple'>
+                  <Button as={ReactLink} to='/registration' variant='link' colorScheme='teal'>
                     Înregistrează-te
                   </Button>
                 </HStack>
@@ -103,7 +103,7 @@ const LoginScreen = () => {
                   </FormControl>
                 </Stack>
                 <Stack spacing='6'>
-                  <Button colorScheme='purple' size='lg' fontSize='md' isLoading={loading} type='submit'>
+                  <Button colorScheme='teal' size='lg' fontSize='md' isLoading={loading} type='submit'>
                     Conectează-te
                   </Button>
                 </Stack>

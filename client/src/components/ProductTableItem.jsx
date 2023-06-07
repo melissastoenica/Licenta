@@ -79,7 +79,7 @@ const ProductTableItem = ({ product }) => {
               <FormLabel htmlFor='productIsNewFlag' mb='0' fontSize='sm'>
                 Activezi insigna
                 <Badge rounded='full' px='1' mx='1' fontSize='0.8em' colorScheme='green'>
-                  Nou 
+                  Nou
                 </Badge>
                 ?
               </FormLabel>
@@ -89,11 +89,11 @@ const ProductTableItem = ({ product }) => {
         </Td>
         <Td>
           <VStack>
-            <Button  colorScheme='red' w='210px' variant='outline' onClick={openDeleteConfirmBox}>
+            <Button colorScheme='red' w='210px' variant='outline' onClick={openDeleteConfirmBox}>
               <DeleteIcon mr='5px' />
               Șterge produsul
             </Button>
-            <Button colorScheme='purple' w='210px' variant='outline' onClick={onSaveProduct}>
+            <Button colorScheme='teal' w='210px' variant='outline' onClick={onSaveProduct}>
               <MdOutlineDataSaverOn style={{ marginRight: '5px' }} />
               Salvează modificările
             </Button>

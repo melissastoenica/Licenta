@@ -9,6 +9,7 @@ import {
   Link,
   Divider,
   useToast,
+  Tooltip,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as ReactLink } from 'react-router-dom';
@@ -35,7 +36,7 @@ const CheckoutOrderSummary = () => {
   const toast = useToast();
 
   const shipping = useCallback(
-    () => (expressShipping === 'true' ? 19.99 : subtotal <= 1000 ? 14.99 : 0),
+    () => (expressShipping === 'true' ? 19.99 : subtotal <= 300 ? 14.99 : 0),
     [expressShipping, subtotal]
   );
 
@@ -130,25 +131,27 @@ const CheckoutOrderSummary = () => {
 
       <Box align='center'>
         <Text fontSize='sm'>Aveți întrebări? Aveți nevoie de ajutor pentru a completa comanda?</Text>
-        <Flex justifyContent='center' color={mode('purple.500', 'purple.100')}>
+        <Flex justifyContent='center' color={mode('teal.500', 'teal.100')}>
           <Flex align='center'>
-            <ChatIcon />
-            <Text m='2'>Chat Live</Text>
-          </Flex>
-          <Flex align='center'>
-            <PhoneIcon />
+            <Tooltip label='0735025213' aria-label='a tooltip'>
+              <PhoneIcon />
+            </Tooltip>
             <Text m='2'>Telefon</Text>
           </Flex>
           <Flex align='center'>
+            <Tooltip label='melissadorisa@gmail.com' aria-label='a tooltip'>
             <EmailIcon />
+            </Tooltip>
             <Text m='2'>Email</Text>
           </Flex>
+
+        
         </Flex>
       </Box>
       <Divider bg={mode('gray.400', 'gray.800')} />
       <Flex justifyContent='center' my='6' fontWeight='semibold'>
         <p>sau</p>
-        <Link as={ReactLink} to='/products' ml='1' color='purple.500'>
+        <Link as={ReactLink} to='/products' ml='1' color='teal.500'>
           Continuă cumpărăturile
         </Link>
       </Flex>

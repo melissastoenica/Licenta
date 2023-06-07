@@ -23,7 +23,7 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@c
 import { CgProfile } from 'react-icons/cg';
 import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { FiShoppingCart } from 'react-icons/fi';
-import { IoStorefrontSharp } from 'react-icons/io5';
+import { GiLipstick } from 'react-icons/gi';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/actions/userActions';
@@ -93,8 +93,8 @@ const NavBar = () => {
             onMouseLeave={() => setIsHovering(false)}
           >
             <Flex alignItems='center'>
-              <Icon as={IoStorefrontSharp} h={6} w={6} color={isHovering ? 'purple.900' : 'purple.400'} />
-              <Text fontWeight='extrabold'> Magazin Online</Text>
+              <Icon as={GiLipstick} h={6} w={6} color={isHovering ? 'teal.900' : 'teal.400'} />
+              <Text fontWeight='extrabold'> Saved by Make-up</Text>
             </Flex>
           </Link>
           <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
@@ -158,8 +158,8 @@ const NavBar = () => {
                 display={{ base: 'none', md: 'inline-flex' }}
                 fontSize='sm'
                 fontWeight={600}
-                _hover={{ bg: 'purple.400' }}
-                bg='purple.500'
+                _hover={{ bg: 'teal.400' }}
+                bg='teal.500'
                 color='white'
               >
                 Creează un cont
